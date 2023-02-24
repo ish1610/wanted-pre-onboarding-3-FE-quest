@@ -8,7 +8,7 @@ const Header = () => {
   const [onRoute] = useRoute();
 
   const navProps: IHeaderProps = {
-    onRouteLogin: () => onRoute(ROUTE.login),
+    onRouteLogin: () => onRoute(ROUTE.Login),
   };
 
   return <HeaderView {...navProps} />;

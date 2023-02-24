@@ -5,20 +5,18 @@ import PageLayout from "../layout/PageLayout";
 import APage from "../pages/APage";
 import BPage from "../pages/BPage";
 import CPage from "../pages/CPage";
-import { ROUTE } from "./types/route";
+import { IRouteProps, ROUTE } from "./types/route";
 
-const AppRoute = () => {
+const AppRoute = ({ isLogin }: IRouteProps) => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<PageLayout />}>
+        <Route element={isLogin ? <PageLayout /> : <Login />}>
           <Route path={"/"} element={<APage />} />
           <Route path={ROUTE.PageA} element={<APage />} />
           <Route path={ROUTE.PageB} element={<BPage />} />
           <Route path={ROUTE.PageC} element={<CPage />} />
         </Route>
-
-        <Route path={ROUTE.Login} element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

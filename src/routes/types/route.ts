@@ -6,3 +6,7 @@ export enum ROUTE {
 }
 
 export type HandleRouteFn = (route: ROUTE) => void;
+
+export interface IRouteProps {
+  isLogin: boolean;
+}

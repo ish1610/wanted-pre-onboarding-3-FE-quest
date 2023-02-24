@@ -15,12 +15,13 @@ const AppRoute = () => {
 
       <Routes>
         <Route element={<PageLayout />}>
+          <Route path={"/"} element={<APage />} />
           <Route path={ROUTE.PageA} element={<APage />} />
           <Route path={ROUTE.PageB} element={<BPage />} />
           <Route path={ROUTE.PageC} element={<CPage />} />
         </Route>
 
-        <Route path={ROUTE.login} element={<Login />} />
+        <Route path={ROUTE.Login} element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

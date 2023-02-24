@@ -1,8 +1,8 @@
 export enum ROUTE {
-  PageA = "/",
+  PageA = "/page-a",
   PageB = "/page-b",
   PageC = "/page-c",
-  login = "/login",
+  Login = "/login",
 }
 
 export type HandleRouteFn = (route: ROUTE) => void;

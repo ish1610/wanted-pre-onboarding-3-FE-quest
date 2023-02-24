@@ -1,5 +1,7 @@
+import A from "../features/A/components/A";
+
 const APage = () => {
-  return <div>페이지A</div>;
+  return <A />;
 };
 
 export default APage;

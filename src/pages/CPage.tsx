@@ -1,5 +1,7 @@
+import C from "../features/C/C";
+
 const CPage = () => {
-  return <div>페이지C</div>;
+  return <C />;
 };
 
 export default CPage;

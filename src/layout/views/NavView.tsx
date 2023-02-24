@@ -4,37 +4,24 @@ import { flexCenter } from "../../common/styles/commonLayout";
 import { INavProps } from "../types/nav";
 
 const NavContainer = styled.nav`
-  position: sticky;
-  top: 0;
-  ${flexCenter}
+  height: calc(100vh - 80px);
   background-color: rgba(230, 230, 230, 0.7);
   color: #333;
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid ${colorBorder};
-  width: 100%;
-  z-index: 9;
-  height: 58px;
-  min-width: 560px;
+
+  border-right: 1px solid ${colorBorder};
 `;
 
 const NavMenu = styled.ul`
-  display: flex;
+  ${flexCenter}
+  flex-direction: column;
+  padding: 50px;
 
   li {
-    margin-right: 50px;
     font-family: "Roboto", "Nanum Gothic", sans-serif;
     font-weight: 700;
     transition: 0.3s;
     font-size: 14px;
-    list-style: none;
-    padding: 10px 0;
-  }
-  li:last-child {
-    margin-right: 0;
-  }
-
-  button {
-    padding: inherit;
+    margin-bottom: 40px;
   }
 
   button:hover {

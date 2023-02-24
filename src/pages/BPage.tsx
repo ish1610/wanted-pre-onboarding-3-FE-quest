@@ -1,5 +1,7 @@
+import B from "../features/B/B";
+
 const BPage = () => {
-  return <div>페이지B</div>;
+  return <B />;
 };
 
 export default BPage;

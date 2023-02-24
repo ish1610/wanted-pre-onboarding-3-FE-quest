@@ -1,6 +1,5 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Login from "../features/login/components/Login";
-import Header from "../layout/Header";
 
 import PageLayout from "../layout/PageLayout";
 import APage from "../pages/APage";
@@ -11,8 +10,6 @@ import { ROUTE } from "./types/route";
 const AppRoute = () => {
   return (
     <BrowserRouter>
-      <Header />
-
       <Routes>
         <Route element={<PageLayout />}>
           <Route path={"/"} element={<APage />} />

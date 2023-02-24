@@ -1,16 +1,22 @@
 import styled from "@emotion/styled";
 import { Outlet } from "react-router-dom";
+import Header from "../Header";
 import Nav from "../Nav";
 
 const PageLayoutContainer = styled.div`
-  display: flex;
+  .page-layout {
+    display: flex;
+  }
 `;
 
 const PageLayoutView = () => {
   return (
     <PageLayoutContainer>
-      <Nav />
-      <Outlet />
+      <Header />
+      <div className="page-layout">
+        <Nav />
+        <Outlet />
+      </div>
     </PageLayoutContainer>
   );
 };

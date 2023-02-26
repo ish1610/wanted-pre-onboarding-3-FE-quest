@@ -37,11 +37,11 @@ const HeaderContainer = styled.header`
   }
 `;
 
-const HeaderView = ({ onRouteLogin }: IHeaderProps) => {
+const HeaderView = ({ onClickLogoutButton }: IHeaderProps) => {
   return (
     <HeaderContainer>
       <h1>Wanted Pre-onboarding course</h1>
-      <button onClick={onRouteLogin}>로그인</button>
+      <button onClick={onClickLogoutButton}>로그아웃</button>
     </HeaderContainer>
   );
 };

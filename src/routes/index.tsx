@@ -1,13 +1,17 @@
+import { useSelector } from "react-redux";
 import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
+import { selectIsLogin } from "../features/login/store/loginStore";
 
 import PageLayout from "../layout/PageLayout";
 import APage from "../pages/APage";
 import BPage from "../pages/BPage";
 import CPage from "../pages/CPage";
 import LoginPage from "../pages/LoginPage";
-import { IRouteProps, ROUTE } from "./types/route";
+import { ROUTE } from "./types/route";
 
-const AppRoute = ({ isLogin }: IRouteProps) => {
+const AppRoute = () => {
+  const isLogin = useSelector(selectIsLogin);
+
   return (
     <BrowserRouter>
       <Routes>

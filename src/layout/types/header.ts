@@ -1,3 +1,3 @@
 export interface IHeaderProps {
-  onRouteLogin: () => void;
+  onClickLogoutButton: () => void;
 }

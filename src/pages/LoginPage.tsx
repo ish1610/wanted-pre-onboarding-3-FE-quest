@@ -1,8 +1,7 @@
-import React from "react";
-import Login from "../features/login/components/Login";
+import LoginLayout from "../features/login/components/LoginLayout";
 
 const LoginPage = () => {
-  return <Login />;
+  return <LoginLayout />;
 };
 
 export default LoginPage;

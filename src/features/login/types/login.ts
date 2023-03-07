@@ -1,3 +1,11 @@
+type LoginSuccessMessage = "SUCCESS";
+type LoginFailMessage = "FAIL";
+
+export type LoginResponse = {
+  message: LoginSuccessMessage | LoginFailMessage;
+  token: string;
+};
+
 export interface ILoginProps {
   isLoginButtonDisabled: boolean;
   idInputValue: string;

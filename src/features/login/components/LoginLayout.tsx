@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { loginAPI } from "../api/login";
+import { userInfoAPI } from "../api/userInfo";
 import useLogin from "../hooks/useLogin";
 import { login } from "../store/loginStore";
 import { ILoginProps } from "../types/login";
@@ -29,8 +31,22 @@ const LoginLayout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLoginFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLoginFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const loginResponse = await loginAPI.login(
+      idInputValue,
+      passwordInputValue
+    );
+    if (!loginResponse) return;
+
+    const userInfo = userInfoAPI.getUserInfo(loginResponse.token);
+    if (!userInfo) return;
+
+    // --------
+    // 사용자 정보 저장 로직 ...
+    // --------
+
     dispatch(login());
     resetIdInputValue();
     resetPasswordInputValue();

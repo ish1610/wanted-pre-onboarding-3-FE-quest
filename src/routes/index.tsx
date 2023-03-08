@@ -12,7 +12,7 @@ export const ReactRouteObject: Router = createBrowserRouter(
       return {
         path: routerItem.path,
         element: (
-          <Authorization layout={routerItem.layout}>
+          <Authorization>
             <PageLayoutView>{routerItem.element}</PageLayoutView>
           </Authorization>
         ),
@@ -22,11 +22,7 @@ export const ReactRouteObject: Router = createBrowserRouter(
     if (routerItem.withAuthorization && !routerItem.layout) {
       return {
         path: routerItem.path,
-        element: (
-          <Authorization layout={routerItem.layout}>
-            {routerItem.element}
-          </Authorization>
-        ),
+        element: <Authorization>{routerItem.element}</Authorization>,
       };
     }
 

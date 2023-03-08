@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { selectIsLogin } from "../store/loginStore";
 import { IAuthorizationProps } from "../types/login";
 
-const Authorization: React.FC<IAuthorizationProps> = ({ children, layout }) => {
+const Authorization: React.FC<IAuthorizationProps> = ({ children }) => {
   const navigate = useNavigate();
   const isLogin = useSelector(selectIsLogin);
 

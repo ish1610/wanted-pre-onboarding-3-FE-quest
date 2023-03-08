@@ -29,19 +29,15 @@ const NavMenu = styled.ul`
   }
 `;
 
-const NavView = ({ onRoutePageA, onRoutePageB, onRoutePageC }: INavProps) => {
+const NavView = ({ navContents }: INavProps) => {
   return (
     <NavContainer>
       <NavMenu>
-        <li onClick={onRoutePageA}>
-          <button>Page A</button>
-        </li>
-        <li onClick={onRoutePageB}>
-          <button>Page B</button>
-        </li>
-        <li onClick={onRoutePageC}>
-          <button>Page C</button>
-        </li>
+        {navContents.map((navContent) => (
+          <li onClick={navContent.route}>
+            <button>{navContent.label}</button>
+          </li>
+        ))}
       </NavMenu>
     </NavContainer>
   );

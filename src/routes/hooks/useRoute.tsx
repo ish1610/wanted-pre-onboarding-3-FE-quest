@@ -8,7 +8,7 @@ const useRoute = () => {
     navigate(route);
   };
 
-  return [handleRoute];
+  return { onRoute: handleRoute };
 };
 
 export default useRoute;

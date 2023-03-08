@@ -1,15 +1,23 @@
+import { routerInfo } from "../routes/data/route";
 import useRoute from "../routes/hooks/useRoute";
-import { ROUTE } from "../routes/types/route";
-import { INavProps } from "./types/nav";
+import { INavProps, NavContent } from "./types/nav";
 import NavView from "./views/NavView";
 
 const Nav = () => {
-  const [onRoute] = useRoute();
+  const { onRoute } = useRoute();
+  const navContents = routerInfo.reduce((prev: NavContent[], current) => {
+    if (current.layout) {
+      return [
+        ...prev,
+        { route: () => onRoute(current.path), label: current.label },
+      ];
+    }
+
+    return prev;
+  }, []);
 
   const navProps: INavProps = {
-    onRoutePageA: () => onRoute(ROUTE.PageA),
-    onRoutePageB: () => onRoute(ROUTE.PageB),
-    onRoutePageC: () => onRoute(ROUTE.PageC),
+    navContents,
   };
 
   return <NavView {...navProps} />;

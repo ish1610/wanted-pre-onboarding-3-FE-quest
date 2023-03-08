@@ -1,5 +1,8 @@
 export interface INavProps {
-  onRoutePageA: () => void;
-  onRoutePageB: () => void;
-  onRoutePageC: () => void;
+  navContents: NavContent[];
 }
+
+export type NavContent = {
+  route: () => void;
+  label: string;
+};

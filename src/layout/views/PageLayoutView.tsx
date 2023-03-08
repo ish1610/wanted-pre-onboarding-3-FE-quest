@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Outlet } from "react-router-dom";
+
 import Header from "../Header";
 import Nav from "../Nav";
 
@@ -9,13 +9,13 @@ const PageLayoutContainer = styled.div`
   }
 `;
 
-const PageLayoutView = () => {
+const PageLayoutView = ({ children }: { children: React.ReactNode }) => {
   return (
     <PageLayoutContainer>
       <Header />
       <div className="page-layout">
         <Nav />
-        <Outlet />
+        {children}
       </div>
     </PageLayoutContainer>
   );

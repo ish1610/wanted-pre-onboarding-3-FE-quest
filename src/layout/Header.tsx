@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../features/login/store/loginStore";
 
 const Header = () => {
-  const [onRoute] = useRoute();
+  const { onRoute } = useRoute();
   const dispatch = useDispatch();
 
   const handleLogoutButtonClick = () => {

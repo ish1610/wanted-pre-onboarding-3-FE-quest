@@ -1,35 +1,42 @@
-import { useSelector } from "react-redux";
-import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
-import { selectIsLogin } from "../features/login/store/loginStore";
+import { Router } from "@remix-run/router";
+import { createBrowserRouter } from "react-router-dom";
+import Authorization from "../features/login/components/Authorization";
+import PageLayoutView from "../layout/views/PageLayoutView";
 
-import PageLayout from "../layout/PageLayout";
-import APage from "../pages/APage";
-import BPage from "../pages/BPage";
-import CPage from "../pages/CPage";
-import LoginPage from "../pages/LoginPage";
-import { ROUTE } from "./types/route";
+import { routerInfo } from "./data/route";
+import { RouterItem } from "./types/route";
 
-const AppRoute = () => {
-  const isLogin = useSelector(selectIsLogin);
+export const ReactRouteObject: Router = createBrowserRouter(
+  routerInfo.map((routerItem: RouterItem) => {
+    if (routerItem.withAuthorization && routerItem.layout) {
+      return {
+        path: routerItem.path,
+        element: (
+          <Authorization layout={routerItem.layout}>
+            <PageLayoutView>{routerItem.element}</PageLayoutView>
+          </Authorization>
+        ),
+      };
+    }
 
-  return (
-    <BrowserRouter>
-      <Routes>
-        {isLogin && (
-          <Route element={<PageLayout />}>
-            <Route path={"/"} element={<APage />} />
-            <Route path={ROUTE.PageA} element={<APage />} />
-            <Route path={ROUTE.PageB} element={<BPage />} />
-            <Route path={ROUTE.PageC} element={<CPage />} />
-          </Route>
-        )}
+    if (routerItem.withAuthorization && !routerItem.layout) {
+      return {
+        path: routerItem.path,
+        element: (
+          <Authorization layout={routerItem.layout}>
+            {routerItem.element}
+          </Authorization>
+        ),
+      };
+    }
 
-        <Route path={ROUTE.Login} element={<LoginPage />} />
+    if (!routerItem.withAuthorization && routerItem.layout) {
+      return {
+        path: routerItem.path,
+        element: <PageLayoutView>{routerItem.element}</PageLayoutView>,
+      };
+    }
 
-        <Route path="*" element={<Navigate to={ROUTE.Login} />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
-
-export default AppRoute;
+    return { path: routerItem.path, element: routerItem.element };
+  })
+);

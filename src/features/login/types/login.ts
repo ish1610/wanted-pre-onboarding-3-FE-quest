@@ -1,3 +1,8 @@
+export interface IAuthorizationProps {
+  children: React.ReactNode;
+  layout: boolean;
+}
+
 type LoginSuccessMessage = "SUCCESS";
 type LoginFailMessage = "FAIL";
 
